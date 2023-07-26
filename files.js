@@ -1,10 +1,12 @@
 /** @satisfies {import('@webcontainer/api').FileSystemTree} */
 
 export const files = {
-    'index.js': {
-      file: {
-        contents: `
+  'index.js': {
+    file: {
+      contents: `
 import express from 'express';
+const aedes = require('aedes');
+const net = require('net');
 const app = express();
 const port = 3111;
   
@@ -15,22 +17,23 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(\`App is live at http://localhost:\${port}\`);
 });`,
-      },
     },
-    'package.json': {
-      file: {
-        contents: `
+  },
+  'package.json': {
+    file: {
+      contents: `
           {
             "name": "example-app",
             "type": "module",
             "dependencies": {
               "express": "latest",
-              "nodemon": "latest"
+              "nodemon": "latest",
+              "aedes": "latest"
             },
             "scripts": {
               "start": "nodemon index.js"
             }
           }`,
-      },
     },
-  };
+  },
+};
